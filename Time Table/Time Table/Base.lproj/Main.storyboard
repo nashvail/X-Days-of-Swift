@@ -5,6 +5,53 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
+        <!--Menu Table View Controller-->
+        <scene sceneID="IyL-t0-MKr">
+            <objects>
+                <tableViewController id="5lt-yq-B0W" userLabel="Menu Table View Controller" customClass="MenuTableViewController" customModule="Time_Table" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="uaz-E7-WU8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuTableCell" rowHeight="120" id="Ap6-5v-3Jb" customClass="MenuTableCell" customModule="Time_Table" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="120"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ap6-5v-3Jb" id="ch7-gZ-yII">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xU-xa-ubl">
+                                            <rect key="frame" x="270" y="0.0" width="61" height="119"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="22"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="2xU-xa-ubl" firstAttribute="centerX" secondItem="ch7-gZ-yII" secondAttribute="centerX" id="LcQ-l6-iBz"/>
+                                        <constraint firstItem="2xU-xa-ubl" firstAttribute="height" secondItem="ch7-gZ-yII" secondAttribute="height" id="OiF-5x-aNJ"/>
+                                        <constraint firstItem="2xU-xa-ubl" firstAttribute="centerY" secondItem="ch7-gZ-yII" secondAttribute="centerY" id="m5N-1l-WiE"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.25882352941176467" green="0.28627450980392155" blue="0.23137254901960785" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="label_menuItem" destination="2xU-xa-ubl" id="Sk4-l4-wI0"/>
+                                    <segue destination="zkH-tY-084" kind="unwind" unwindAction="unwindToHome:" id="2yq-vj-3UN"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5lt-yq-B0W" id="JkD-Hx-HsQ"/>
+                            <outlet property="delegate" destination="5lt-yq-B0W" id="BI6-K3-pn0"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ipf-8O-rrd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zkH-tY-084" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="10" y="363"/>
+        </scene>
         <!--Monday-->
         <scene sceneID="aol-RJ-5pH">
             <objects>
@@ -28,7 +75,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8:30 AM - 9:55 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KNs-tN-76O" userLabel="timeLabel">
-                                            <rect key="frame" x="15" y="12" width="126" height="24"/>
+                                            <rect key="frame" x="15" y="12" width="577" height="24"/>
                                             <fontDescription key="fontDescription" name="AvenirNextCondensed-Bold" family="Avenir Next Condensed" pointSize="17"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -52,6 +99,9 @@
                     <navigationItem key="navigationItem" title="Monday" id="D6a-Qv-1GN">
                         <barButtonItem key="rightBarButtonItem" image="Image" id="YaG-RE-GNA">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="5lt-yq-B0W" kind="presentation" modalPresentationStyle="overCurrentContext" id="rXg-S5-UrI"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

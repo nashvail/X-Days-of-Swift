@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C6575DE61C8F0A0500017772 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6575DE51C8F0A0500017772 /* ColorData.swift */; };
+		C6575DE81C8F123E00017772 /* TimeTableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6575DE71C8F123E00017772 /* TimeTableData.swift */; };
 		C6C069881C8C642B000C092D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C069871C8C642B000C092D /* AppDelegate.swift */; };
 		C6C0698D1C8C642B000C092D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6C0698B1C8C642B000C092D /* Main.storyboard */; };
 		C6C0698F1C8C642B000C092D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6C0698E1C8C642B000C092D /* Assets.xcassets */; };
@@ -14,9 +16,13 @@
 		C6C069A41C8C6F3E000C092D /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C069A31C8C6F3E000C092D /* NavigationController.swift */; };
 		C6C069A61C8C70B4000C092D /* TimeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C069A51C8C70B4000C092D /* TimeTableViewController.swift */; };
 		C6C069A81C8C8777000C092D /* TimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C069A71C8C8777000C092D /* TimeTableViewCell.swift */; };
+		C6EA60B81C8D883700317D9E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EA60B71C8D883700317D9E /* MenuTableViewController.swift */; };
+		C6EA60BA1C8D8AA100317D9E /* MenuTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EA60B91C8D8AA100317D9E /* MenuTableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C6575DE51C8F0A0500017772 /* ColorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
+		C6575DE71C8F123E00017772 /* TimeTableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableData.swift; sourceTree = "<group>"; };
 		C6C069841C8C642B000C092D /* Time Table.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Table.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6C069871C8C642B000C092D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6C0698C1C8C642B000C092D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -26,6 +32,8 @@
 		C6C069A31C8C6F3E000C092D /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		C6C069A51C8C70B4000C092D /* TimeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewController.swift; sourceTree = "<group>"; };
 		C6C069A71C8C8777000C092D /* TimeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTableViewCell.swift; sourceTree = "<group>"; };
+		C6EA60B71C8D883700317D9E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		C6EA60B91C8D8AA100317D9E /* MenuTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +50,7 @@
 		C6C0697B1C8C642B000C092D = {
 			isa = PBXGroup;
 			children = (
+				C6575DE71C8F123E00017772 /* TimeTableData.swift */,
 				C6C069861C8C642B000C092D /* Time Table */,
 				C6C069851C8C642B000C092D /* Products */,
 			);
@@ -64,6 +73,9 @@
 				C6C069A51C8C70B4000C092D /* TimeTableViewController.swift */,
 				C6C069A71C8C8777000C092D /* TimeTableViewCell.swift */,
 				C6C0698E1C8C642B000C092D /* Assets.xcassets */,
+				C6EA60B71C8D883700317D9E /* MenuTableViewController.swift */,
+				C6EA60B91C8D8AA100317D9E /* MenuTableCell.swift */,
+				C6575DE51C8F0A0500017772 /* ColorData.swift */,
 				C6C069901C8C642B000C092D /* LaunchScreen.storyboard */,
 				C6C069931C8C642B000C092D /* Info.plist */,
 			);
@@ -143,9 +155,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6C069A81C8C8777000C092D /* TimeTableViewCell.swift in Sources */,
+				C6EA60BA1C8D8AA100317D9E /* MenuTableCell.swift in Sources */,
 				C6C069881C8C642B000C092D /* AppDelegate.swift in Sources */,
+				C6575DE61C8F0A0500017772 /* ColorData.swift in Sources */,
+				C6EA60B81C8D883700317D9E /* MenuTableViewController.swift in Sources */,
 				C6C069A41C8C6F3E000C092D /* NavigationController.swift in Sources */,
 				C6C069A61C8C70B4000C092D /* TimeTableViewController.swift in Sources */,
+				C6575DE81C8F123E00017772 /* TimeTableData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +309,7 @@
 				C6C069981C8C642B000C092D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

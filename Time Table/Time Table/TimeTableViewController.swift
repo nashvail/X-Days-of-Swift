@@ -9,9 +9,9 @@
 import UIKit
 
 class TimeTableViewController: UITableViewController {
-
-	var defaultColor = UIColor(red: 66/255.0, green: 73/255.0, blue: 59/255.0, alpha: 1)
-	var cellColors = ["#C3D8B9", "#BCD2B0", "#AEC4A4", "#9EB394", "#7BA07D", "#6F8A67", "#505D41", "#43483B"]
+	
+	var currentDay = "Monday"
+	var todaysTimeTable = [DaySection:Subject]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,19 +48,34 @@ class TimeTableViewController: UITableViewController {
 
 	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 			// #warning Incomplete implementation, return the number of rows
-			return 8
+		return timeTable.days[Days[currentDay]!].timeTable.count
 	}
 
 
 	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("timeTableCell", forIndexPath: indexPath) as! TimeTableViewCell
-		cell.label_time.text = "8:30 AM - 9:34 PM"
-		cell.label_subjectName.text = "Theoretical Computer Science"
+		
+		let todaysTimeTable = timeTable.days[Days[currentDay]!].timeTable
+		let daySectionForRow = daySections[indexPath.row]
+		let subjectForRow = todaysTimeTable[daySectionForRow]
+		cell.label_time.text = "\(daySectionForRow.toString())"
+		cell.label_subjectName.text = subjectForRow?.name
+		
 		return cell
 	}
 	
 	override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-		cell.backgroundColor = colorForCellAtIndex(index: indexPath.row)
+		if isActiveDaySection(daySections[indexPath.row]) {
+			cell.backgroundColor = currentSubjectColor
+		} else {
+  		cell.backgroundColor = colorForCellAtIndex(index: indexPath.row)
+		}
+	}
+	
+	override func viewWillAppear(animated: Bool) {
+		currentDay = todaysDayName()
+		self.title = currentDay
+		reloadDataAndAnimate()
 	}
 	
 
@@ -116,29 +131,84 @@ class TimeTableViewController: UITableViewController {
 		return colorWithHexString(cellColors[index])
 	}
 	
-	// Converts HEX String to UIColor
-	func colorWithHexString (hex:String) -> UIColor {
-		var cString:String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
+	// MARK: Navigation Functions
+	
+	// This is called when we go to the Menu view to the Time table view
+	@IBAction func unwindToHome(segue: UIStoryboardSegue) {
+		let sourceController = segue.sourceViewController as! MenuTableViewController
 		
-		if (cString.hasPrefix("#")) {
-			cString = (cString as NSString).substringFromIndex(1)
+		var dayToDisplay = sourceController.currentItem
+		
+		if dayToDisplay == "Today" {
+			dayToDisplay = todaysDayName()
 		}
 		
-		if (cString.characters.count != 6) {
-			return UIColor.grayColor()
+		self.title = dayToDisplay
+		currentDay = dayToDisplay
+		reloadDataAndAnimate()
+	}
+	
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+		let menuTableViewController = segue.destinationViewController as! MenuTableViewController
+		menuTableViewController.currentItem = self.title!
+	}
+	
+	// MARK: Further functions
+	
+	func todaysDayName() -> String {
+		
+		let currentDate = NSDate()
+		let dateFormatter = NSDateFormatter()
+		
+		// EEEE gives back the name of the day in full example Monday, Tuesday e.t.c
+		dateFormatter.dateFormat = "EEEE"
+		
+		let todaysDayName = dateFormatter.stringFromDate(currentDate)
+		
+		return todaysDayName
+		
+	}
+	
+	func currentTime() -> Time {
+		let currentDate = NSDate()
+		let calendar = NSCalendar.currentCalendar()
+		
+		let dateComponents = calendar.components([NSCalendarUnit.Hour, NSCalendarUnit.Minute], fromDate: currentDate)
+		
+		return Time(hours: dateComponents.hour, minutes: dateComponents.minute)
+	}
+	
+	func isActiveDaySection(daySection: DaySection) -> Bool {
+		let currntTime = currentTime()
+		
+		return (currentDay == todaysDayName() && currntTime.militaryRepresentation() >= daySection.startTime.militaryRepresentation() && currntTime.militaryRepresentation() <= daySection.endTime.militaryRepresentation())
+	}
+	
+	
+	// MARK : Animations
+	
+	func reloadDataAndAnimate() {
+		self.tableView.reloadData()
+		
+		let cells = self.tableView.visibleCells
+		let tableHeight: CGFloat = self.tableView.bounds.size.height
+		
+		// Put all the cells at the bottom of the table
+		for i in cells {
+			let cell: UITableViewCell = i as UITableViewCell
+			cell.transform = CGAffineTransformMakeTranslation(0, tableHeight)
 		}
 		
-		let rString = (cString as NSString).substringToIndex(2)
-		let gString = ((cString as NSString).substringFromIndex(2) as NSString).substringToIndex(2)
-		let bString = ((cString as NSString).substringFromIndex(4) as NSString).substringToIndex(2)
+		var index = 0
 		
-		var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
-		NSScanner(string: rString).scanHexInt(&r)
-		NSScanner(string: gString).scanHexInt(&g)
-		NSScanner(string: bString).scanHexInt(&b)
+		for a in cells {
+			let cell: UITableViewCell = a as UITableViewCell
+			UIView.animateWithDuration(0.5, delay: 0.05 * Double(index), usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: [], animations: { () -> Void in
+				cell.transform = CGAffineTransformMakeTranslation(0, 0)
+				}, completion: nil)
+			index += 1
+		}
 		
-		
-		return UIColor(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: CGFloat(1))
 	}
 
 }
