@@ -97,6 +97,8 @@ let subject_lab_dbms = Subject(name: "Lab DBMS")
 
 // Data for Days of the week
 
+// TODO: fix for when the day sections are not consecutive and the app cakes its pants
+
 let Monday = Day(dayName: "Monday",
 	timeTable: [
 		daySection_one: subject_tcs,

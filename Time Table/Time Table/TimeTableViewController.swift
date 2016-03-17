@@ -163,7 +163,11 @@ class TimeTableViewController: UITableViewController {
 		// EEEE gives back the name of the day in full example Monday, Tuesday e.t.c
 		dateFormatter.dateFormat = "EEEE"
 		
-		let todaysDayName = dateFormatter.stringFromDate(currentDate)
+		var todaysDayName = dateFormatter.stringFromDate(currentDate)
+		
+		if todaysDayName == "Sunday" || todaysDayName == "Saturday" {
+			todaysDayName = "Monday"
+		}
 		
 		return todaysDayName
 		
