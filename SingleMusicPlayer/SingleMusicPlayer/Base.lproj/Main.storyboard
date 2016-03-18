@@ -19,7 +19,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrc-cp-Tpw" userLabel="ProgressArcBase" customClass="ProgressArcView" customModule="SingleMusicPlayer" customModuleProvider="target">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="FPK-9F-dpn"/>
                                     <constraint firstAttribute="width" constant="200" id="Vmn-Ao-7L7"/>
