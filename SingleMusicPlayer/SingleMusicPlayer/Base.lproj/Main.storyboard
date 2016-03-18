@@ -17,16 +17,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JdS-X1-Mei" userLabel="ProgressArc" customClass="ProgressArcView" customModule="SingleMusicPlayer" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qrc-cp-Tpw" userLabel="ProgressArcBase" customClass="ProgressArcView" customModule="SingleMusicPlayer" customModuleProvider="target">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="I1N-xQ-mJ6"/>
-                                    <constraint firstAttribute="width" constant="200" id="QSG-eD-60T"/>
+                                    <constraint firstAttribute="height" constant="200" id="FPK-9F-dpn"/>
+                                    <constraint firstAttribute="width" constant="200" id="Vmn-Ao-7L7"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="percentProgress">
-                                        <real key="value" value="89"/>
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUI-il-zyY" userLabel="ProgressArc" customClass="ProgressArcView" customModule="SingleMusicPlayer" customModuleProvider="target">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="Slf-Rb-y6F"/>
+                                    <constraint firstAttribute="height" constant="200" id="igI-YM-Yd3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="percentProgress">
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -54,7 +67,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbC-e4-XDq" userLabel="PlayPause" customClass="PlayButtonView" customModule="SingleMusicPlayer" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DbC-e4-XDq" userLabel="PlayPause" customClass="PlayButtonView" customModule="SingleMusicPlayer" customModuleProvider="target">
                                 <rect key="frame" x="220" y="220" width="160" height="160"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="aVL-7x-2tt"/>
@@ -74,18 +87,27 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="play:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iyU-D1-lco"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JdS-X1-Mei" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="N6K-ZL-Fcv"/>
+                            <constraint firstItem="QUI-il-zyY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DEq-42-N2p"/>
+                            <constraint firstItem="qrc-cp-Tpw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ESn-nb-yHH"/>
+                            <constraint firstItem="QUI-il-zyY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VuB-IU-gtX"/>
                             <constraint firstItem="pwo-aF-icd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cua-IC-kOs"/>
                             <constraint firstItem="DbC-e4-XDq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="f6g-wB-wp4"/>
+                            <constraint firstItem="qrc-cp-Tpw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fUY-Vk-8Ae"/>
                             <constraint firstItem="DbC-e4-XDq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="peO-Pk-GZB"/>
-                            <constraint firstItem="JdS-X1-Mei" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tKx-Sv-nH7"/>
                             <constraint firstItem="pwo-aF-icd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="wPK-kY-z50"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playButton" destination="DbC-e4-XDq" id="xDz-Lk-9Zk"/>
+                        <outlet property="progressArc" destination="QUI-il-zyY" id="ESu-ya-X1g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

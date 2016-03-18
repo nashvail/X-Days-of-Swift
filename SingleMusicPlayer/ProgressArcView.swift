@@ -13,14 +13,14 @@ class ProgressArcView: UIView {
 	
 	let π:CGFloat = CGFloat(M_PI)
 	let stepAngle = CGFloat(M_PI)/16
-	
+	 
+	@IBInspectable var arcColor = RGBA(155, green: 155, blue: 155, alpha: 110)
 	@IBInspectable var percentProgress: Float = 10 {
 		didSet {
 			setNeedsDisplay()
 		}
 	}
 	
-	@IBInspectable var arcColor = RGB(246, green: 224, blue: 50)
 	
 	override func drawRect(rect: CGRect) {
 		

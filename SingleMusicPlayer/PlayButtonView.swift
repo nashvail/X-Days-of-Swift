@@ -20,15 +20,25 @@ class PlayButtonView: UIButton {
 	@IBInspectable var shadowOpacity: Float = 0.5
 	@IBInspectable var shadowRadius: CGFloat = 0.0
 	
-	// So that the shadow of the button is not clipped off by the containing frame
-	// we will draw the button smaller than the size of the actual frame
-	let paddingInContainer:CGFloat = 30
+	// MARK: Class variables
+	// When the button is in playing state it shows pause icon
+	// When the button is not in playing state (paused state) it shows play icon
+	var isInPlayingState = false {
+		didSet {
+			setNeedsDisplay()
+		}
+	}
 	
-	var buttonRect:CGRect!
+	// MARK: Override functions
 	
-	
-	// Redraw the button as a filled circle
 	override func drawRect(rect: CGRect) {
+		
+		if isInPlayingState {
+			setButtonImage("Pause")
+		} else {
+			setButtonImage("Play")
+		}
+		
 		let path = UIBezierPath(ovalInRect: rect)
 		buttonColor.setFill()
 		path.fill()
@@ -44,4 +54,10 @@ class PlayButtonView: UIButton {
 		layer.shadowRadius = shadowRadius
 		layer.shadowPath = shadowPath.CGPath
 	}
+	
+	// MARK: Custom functions
+	func setButtonImage(imageName: String) {
+  		self.setImage(UIImage(named: imageName), forState: .Normal)
+	}
+	
 }
