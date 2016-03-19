@@ -21,6 +21,10 @@ class ViewController: UIViewController {
 	var currentProgress = 0
 	var isPlaying = false
 	
+	// MARK: Audio file properties 
+	let audioFileName = "allineed"
+	let audioFileType = "mp3"
+	
 	@IBAction func play(sender: AnyObject) {
 		// Let us take a simple route here 
 		if isPlaying {
@@ -31,19 +35,20 @@ class ViewController: UIViewController {
 		
 		isPlaying = !isPlaying
 		playButton.isInPlayingState = isPlaying
+		
 	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		progressArc.arcColor = RGB(34, green: 147, blue: 251)
-		initAudioFile(fileName: "bach", type: "mp3")
+		initAudioFile(fileName: audioFileName, type: audioFileType)
 		
 		// Updates progress arc every 0.05 seconds
-		_ = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "updateProgressArc", userInfo: nil, repeats: true)
+		_ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateProgressArc", userInfo: nil, repeats: true)
 		
-		// Let us just add and animate ripples here, first of try to add a view dynamically
-		_ = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "createRipple", userInfo: nil, repeats: true)
+		// Adds ripples to the view every 0.7 seconds
+		_ = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: "createRipple", userInfo: nil, repeats: true)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -59,13 +64,24 @@ class ViewController: UIViewController {
 		try player = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(fileName, ofType: type)!))
 		} catch {
 			// Handle any errors if this happens
-			print("Didn't freaking work")
+			print("There was an error retrieving the file, maybe it doesn't exist")
 		}
+		
+		isPlaying = false
+		playButton.isInPlayingState = false
 	}
 	
 	func updateProgressArc() {
-		progressArc.percentProgress = Float((player.currentTime / player.duration)) * 100.0
+		let percentagePlayed = Float((player.currentTime / player.duration)) * 100.0
+		progressArc.percentProgress = percentagePlayed
+		
+		// Very temporary solution to find if the song an finished playing and then reset the player
+		if percentagePlayed >= 99.0 { // When the player has finished playing 99% of the song
+			initAudioFile(fileName: audioFileName, type: audioFileType)
+		}
 	}
+	
+	// MARK : Methods for addition and animation of ripples
 	
 	func addRippleCircle() -> CircleView {
 		let circle = CircleView(frame: progressArc.frame, strokeWidth: 1)!
@@ -79,7 +95,7 @@ class ViewController: UIViewController {
 		rippleCircle.alpha = 1.0
 		
 		UIView.animateWithDuration(4, delay: 0.0, options: [.CurveEaseInOut], animations: { () -> Void in
-  		rippleCircle.transform = CGAffineTransformMakeScale(4, 4)
+  		rippleCircle.transform = CGAffineTransformMakeScale(2.5, 2.5)
   		rippleCircle.alpha -= 1.0
 			}, completion: { _ -> Void in
 				rippleCircle.removeFromSuperview()
