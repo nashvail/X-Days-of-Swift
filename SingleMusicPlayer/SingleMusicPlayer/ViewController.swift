@@ -75,7 +75,7 @@ class ViewController: UIViewController {
 		let percentagePlayed = Float((player.currentTime / player.duration)) * 100.0
 		progressArc.percentProgress = percentagePlayed
 		
-		// Very temporary solution to find if the song an finished playing and then reset the player
+		// Very temporary solution to find if the song has finished playing and then reset the player
 		if percentagePlayed >= 99.0 { // When the player has finished playing 99% of the song
 			initAudioFile(fileName: audioFileName, type: audioFileType)
 		}
