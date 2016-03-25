@@ -22,7 +22,7 @@ class ViewController: UIViewController {
 	var isPlaying = false
 	
 	// MARK: Audio file properties 
-	let audioFileName = "allineed"
+	let audioFileName = "bach"
 	let audioFileType = "mp3"
 	
 	@IBAction func play(sender: AnyObject) {
@@ -85,7 +85,6 @@ class ViewController: UIViewController {
 	
 	func addRippleCircle() -> CircleView {
 		let circle = CircleView(frame: progressArc.frame, strokeWidth: 1)!
-		circle.center = self.view.center
 		self.view.insertSubview(circle, aboveSubview: progressArc)
 		
 		return circle
