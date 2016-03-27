@@ -16,6 +16,7 @@
 		C6D12A3C1C9AB3A100655D2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6D12A3A1C9AB3A100655D2F /* LaunchScreen.storyboard */; };
 		C6D12A471C9AB52300655D2F /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D12A461C9AB52300655D2F /* PlayButtonView.swift */; };
 		C6D12A4A1C9AB63500655D2F /* RGBAColorFromString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D12A491C9AB63500655D2F /* RGBAColorFromString.swift */; };
+		C6D322111CA7CC8E00495E39 /* ColoredSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D322101CA7CC8E00495E39 /* ColoredSlider.swift */; };
 		C6EF42451C9BB8F600B32DDF /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6EF42441C9BB8F600B32DDF /* CircleView.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		C6D12A3D1C9AB3A100655D2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6D12A461C9AB52300655D2F /* PlayButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PlayButtonView.swift; path = ../PlayButtonView.swift; sourceTree = "<group>"; };
 		C6D12A491C9AB63500655D2F /* RGBAColorFromString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBAColorFromString.swift; sourceTree = "<group>"; };
+		C6D322101CA7CC8E00495E39 /* ColoredSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredSlider.swift; sourceTree = "<group>"; };
 		C6EF42441C9BB8F600B32DDF /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 		C6D3220F1CA7CB6100495E39 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				C6D322101CA7CC8E00495E39 /* ColoredSlider.swift */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				C6D12A471C9AB52300655D2F /* PlayButtonView.swift in Sources */,
 				C6D12A341C9AB3A100655D2F /* ViewController.swift in Sources */,
 				C6D12A4A1C9AB63500655D2F /* RGBAColorFromString.swift in Sources */,
+				C6D322111CA7CC8E00495E39 /* ColoredSlider.swift in Sources */,
 				C6D12A321C9AB3A100655D2F /* AppDelegate.swift in Sources */,
 				C624FBC61C9AC7CC00FAA637 /* ProgressArcView.swift in Sources */,
 			);

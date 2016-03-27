@@ -16,6 +16,9 @@ class ViewController: UIViewController {
 	// MARK: IBOutlets
 	@IBOutlet var playButton:PlayButtonView!
 	@IBOutlet var progressArc:ProgressArcView!
+	@IBOutlet var volumeSliderPlaceholder: UIView!
+	
+	var volumeSlider: ColoredSlider!
 	
 	// MARK: Class Variables
 	var currentProgress = 0
@@ -42,6 +45,10 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		
 		progressArc.arcColor = RGB(34, green: 147, blue: 251)
+		
+		volumeSlider = ColoredSlider(frame: volumeSliderPlaceholder.bounds, minimumValue: 0.0, maximumValue: 1.0, color: UIColor.blackColor())
+		volumeSliderPlaceholder.addSubview(volumeSlider)
+		
 		initAudioFile(fileName: audioFileName, type: audioFileType)
 		
 		// Updates progress arc every 0.05 seconds
@@ -50,7 +57,7 @@ class ViewController: UIViewController {
 		// Adds ripples to the view every 0.7 seconds
 		_ = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(ViewController.createRipple), userInfo: nil, repeats: true)
 	}
-
+	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -98,7 +98,7 @@
                                     <constraint firstAttribute="height" constant="21" id="eOX-e9-nXl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="28"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radiohead" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLw-y7-LKU">
@@ -107,17 +107,27 @@
                                     <constraint firstAttribute="height" constant="24" id="HaI-1R-Tqg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92b-Zz-HP4" userLabel="Colored Slider">
+                                <rect key="frame" x="200" y="480" width="200" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="0bp-0Q-get"/>
+                                    <constraint firstAttribute="height" constant="50" id="9V5-6z-KiD"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QUI-il-zyY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DEq-42-N2p"/>
                             <constraint firstItem="qrc-cp-Tpw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ESn-nb-yHH"/>
+                            <constraint firstItem="92b-Zz-HP4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IHH-kY-Kwx"/>
                             <constraint firstItem="tLw-y7-LKU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Q6r-Bx-yeS"/>
                             <constraint firstItem="slF-HD-47r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="SJl-Xt-qXG"/>
                             <constraint firstItem="QUI-il-zyY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VuB-IU-gtX"/>
+                            <constraint firstItem="92b-Zz-HP4" firstAttribute="top" secondItem="QUI-il-zyY" secondAttribute="bottom" constant="80" id="cUt-uQ-d1t"/>
                             <constraint firstItem="pwo-aF-icd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cua-IC-kOs"/>
                             <constraint firstItem="tLw-y7-LKU" firstAttribute="top" secondItem="slF-HD-47r" secondAttribute="bottom" constant="8" id="f4t-dE-EsV"/>
                             <constraint firstItem="DbC-e4-XDq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="f6g-wB-wp4"/>
@@ -132,6 +142,7 @@
                     <connections>
                         <outlet property="playButton" destination="DbC-e4-XDq" id="xDz-Lk-9Zk"/>
                         <outlet property="progressArc" destination="QUI-il-zyY" id="ESu-ya-X1g"/>
+                        <outlet property="volumeSliderPlaceholder" destination="92b-Zz-HP4" id="eas-Jx-CiW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
