@@ -1,12 +1,16 @@
 //
 //  ColoredSlider.swift
-//  SingleMusicPlayer
 //
 //  Created by Nash Vail on 27/03/16.
 //  Copyright © 2016 Nishant Verma ( Nash Vail ). All rights reserved.
+//	------------------------------------------------------------------
+//
+// Exports a Slider UI Component, same as the default iOS component, except
+// that you have control over the color and size of the stick and thumb of the slider.
 //
 
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 
 // Clamps value in between minValue and maxValue.
 func clamp(value: Float, minValue: Float, maxValue: Float) -> Float {
@@ -34,7 +38,8 @@ class ColoredSlider: UIControl {
 			_backingValue = clamp(newValue, minValue: minimumValue, maxValue: maximumValue)
 			
 			// Position the thumb in the slider on value change
-			renderer.thumbPosition = _minimumValue + ((_backingValue - _minimumValue) / _maximumValue - _minimumValue)
+			let currentValueInPercentageOfMax = ((_backingValue - _minimumValue) / (_maximumValue - _minimumValue))
+			renderer.thumbPosition = currentValueInPercentageOfMax
 		}
 	}
 	
@@ -182,3 +187,5 @@ private class ColoredSliderRenderer {
 	}
 	
 }
+
+

@@ -48,7 +48,7 @@ class ViewController: UIViewController {
 		
 		volumeSlider = ColoredSlider(frame: volumeSliderPlaceholder.bounds, minimumValue: 0.0, maximumValue: 1.0, color: UIColor.blackColor())
 		volumeSliderPlaceholder.addSubview(volumeSlider)
-		volumeSlider.value = 0.9
+		volumeSlider.value = 0.7
 		
 		initAudioFile(fileName: audioFileName, type: audioFileType)
 		
