@@ -8,6 +8,11 @@
 
 import UIKit
 
+// Clamps value in between minValue and maxValue.
+func clamp(value: Float, minValue: Float, maxValue: Float) -> Float {
+	return min(maxValue, max(minValue, value))
+}
+
 class ColoredSlider: UIControl {
 	
 	// MARK: Properties
@@ -26,7 +31,10 @@ class ColoredSlider: UIControl {
 	var value: Float {
 		get { return _backingValue }
 		set {
-			_backingValue = newValue
+			_backingValue = clamp(newValue, minValue: minimumValue, maxValue: maximumValue)
+			
+			// Position the thumb in the slider on value change
+			renderer.thumbPosition = _minimumValue + ((_backingValue - _minimumValue) / _maximumValue - _minimumValue)
 		}
 	}
 	
@@ -81,6 +89,7 @@ class ColoredSlider: UIControl {
 		renderer.thumbStrokeColor = color
 		
 		layer.addSublayer(renderer.stickLayer)
+		layer.addSublayer(renderer.thumbLayer)
 	}
 	
 
@@ -93,16 +102,16 @@ private class ColoredSliderRenderer {
 	private let thumbLayer = CAShapeLayer()
 	private let stickLayer = CAShapeLayer()
 	
-	var stickStrokeWidth: CGFloat = 6.0 {
+	var stickStrokeWidth: CGFloat = 4.0 {
 		didSet { update() }
 	}
 	
-	var thumbRadius: CGFloat = 10.0 {
+	var thumbRadius: CGFloat = 6.5 {
 		didSet { update() }
 	}
 	
 	// 0.0 positions thumb at the start of stick and 1.0 positions it at the end
-	var thumbPosition: CGFloat = 0.0 {
+	var thumbPosition: Float = 0.0 {
 		didSet{ update() }
 	}
 	
@@ -132,31 +141,43 @@ private class ColoredSliderRenderer {
 	// MARK: Methods
 	
 	// MARK: Initializers
-	init() {
-		thumbLayer.fillColor = UIColor.clearColor().CGColor
-		stickLayer.fillColor = UIColor.clearColor().CGColor
-	}
+	init() {}
 	
 	// MARK: Custom methods
+	func update(bounds: CGRect) {
+		stickLayer.bounds = bounds
+		stickLayer.position = CGPoint(x: bounds.width/2.0, y: 0.0)
+		thumbLayer.position = CGPoint(x: 0.0, y: 0.0)
+		update()
+	}
 	
-	func drawStick() {
+	private func drawStick() {
 		let path = UIBezierPath()
 		path.moveToPoint(CGPoint(x: 0.0, y: stickLayer.bounds.height/2.0))
 		path.addLineToPoint(CGPoint(x: stickLayer.bounds.width, y: stickLayer.bounds.height/2.0))
 		stickLayer.path = path.CGPath
 	}
 	
-	func update() {
+	private func drawThumb() {
+		thumbLayer.path = UIBezierPath(
+			arcCenter: CGPointZero,
+			radius: thumbRadius,
+			startAngle: 0.0,
+			endAngle: 2*CGFloat(M_PI),
+			clockwise: true).CGPath
+	}
+	
+	private func update() {
 		stickLayer.lineWidth = stickStrokeWidth
 		stickLayer.lineCap = kCALineCapRound
+		
 		drawStick()
+		drawThumb()
+		positionThumb()
 	}
 	
-	func update(bounds: CGRect) {
-		stickLayer.bounds = bounds
-		stickLayer.position = CGPoint(x: bounds.width/2.0, y: 0.0)
-		update()
+	private func positionThumb() {
+		thumbLayer.position.x = CGFloat(thumbPosition) * stickLayer.bounds.width
 	}
-	
 	
 }
