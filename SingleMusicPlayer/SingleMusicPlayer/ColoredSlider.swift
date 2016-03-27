@@ -115,6 +115,7 @@ private class ColoredSliderRenderer {
 		didSet{ update() }
 	}
 	
+	// Separate the color components of thumb, anticipating future extension
 	var thumbStrokeColor: UIColor {
 		get { return UIColor(CGColor: thumbLayer.strokeColor!) }
 		set(thumbStrokeColor) {
@@ -125,7 +126,7 @@ private class ColoredSliderRenderer {
 	var thumbFillColor: UIColor {
 		get { return UIColor(CGColor: thumbLayer.fillColor!) }
 		set(thumbFillColor) {
-			thumbLayer.strokeColor = thumbFillColor.CGColor
+			thumbLayer.fillColor = thumbFillColor.CGColor
 		}
 	}
 	
