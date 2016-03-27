@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C60367F21C9D035B0090E86E /* allineed.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C60367F11C9D035B0090E86E /* allineed.mp3 */; };
 		C624FBC61C9AC7CC00FAA637 /* ProgressArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C624FBC51C9AC7CC00FAA637 /* ProgressArcView.swift */; };
 		C624FBC91C9AD04100FAA637 /* bach.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C624FBC81C9AD04000FAA637 /* bach.mp3 */; };
 		C6D12A321C9AB3A100655D2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D12A311C9AB3A100655D2F /* AppDelegate.swift */; };
@@ -21,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C60367F11C9D035B0090E86E /* allineed.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = allineed.mp3; sourceTree = "<group>"; };
 		C624FBC51C9AC7CC00FAA637 /* ProgressArcView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressArcView.swift; path = ../ProgressArcView.swift; sourceTree = "<group>"; };
 		C624FBC81C9AD04000FAA637 /* bach.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bach.mp3; sourceTree = "<group>"; };
 		C6D12A2E1C9AB3A100655D2F /* SingleMusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingleMusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +48,6 @@
 		C624FBC71C9AD02B00FAA637 /* Bundles and Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C60367F11C9D035B0090E86E /* allineed.mp3 */,
 				C624FBC81C9AD04000FAA637 /* bach.mp3 */,
 			);
 			name = "Bundles and Resources";
@@ -89,6 +86,7 @@
 		C6D12A431C9AB48700655D2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C6D3220F1CA7CB6100495E39 /* Controls */,
 				C6EF42441C9BB8F600B32DDF /* CircleView.swift */,
 				C624FBC51C9AC7CC00FAA637 /* ProgressArcView.swift */,
 				C6D12A461C9AB52300655D2F /* PlayButtonView.swift */,
@@ -120,6 +118,13 @@
 				C6D12A491C9AB63500655D2F /* RGBAColorFromString.swift */,
 			);
 			name = "Categories and Extensions";
+			sourceTree = "<group>";
+		};
+		C6D3220F1CA7CB6100495E39 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +187,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C624FBC91C9AD04100FAA637 /* bach.mp3 in Resources */,
-				C60367F21C9D035B0090E86E /* allineed.mp3 in Resources */,
 				C6D12A3C1C9AB3A100655D2F /* LaunchScreen.storyboard in Resources */,
 				C6D12A391C9AB3A100655D2F /* Assets.xcassets in Resources */,
 				C6D12A371C9AB3A100655D2F /* Main.storyboard in Resources */,

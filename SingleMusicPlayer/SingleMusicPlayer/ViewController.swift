@@ -45,10 +45,10 @@ class ViewController: UIViewController {
 		initAudioFile(fileName: audioFileName, type: audioFileType)
 		
 		// Updates progress arc every 0.05 seconds
-		_ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: "updateProgressArc", userInfo: nil, repeats: true)
+		_ = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: #selector(ViewController.updateProgressArc), userInfo: nil, repeats: true)
 		
 		// Adds ripples to the view every 0.7 seconds
-		_ = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: "createRipple", userInfo: nil, repeats: true)
+		_ = NSTimer.scheduledTimerWithTimeInterval(0.7, target: self, selector: #selector(ViewController.createRipple), userInfo: nil, repeats: true)
 	}
 
 	override func didReceiveMemoryWarning() {
