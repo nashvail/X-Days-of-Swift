@@ -111,11 +111,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92b-Zz-HP4" userLabel="Colored Slider">
-                                <rect key="frame" x="200" y="480" width="200" height="50"/>
+                                <rect key="frame" x="200" y="480" width="200" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="0bp-0Q-get"/>
-                                    <constraint firstAttribute="height" constant="50" id="9V5-6z-KiD"/>
+                                    <constraint firstAttribute="height" constant="20" id="9V5-6z-KiD"/>
                                 </constraints>
                             </view>
                         </subviews>

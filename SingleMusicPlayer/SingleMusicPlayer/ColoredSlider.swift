@@ -30,6 +30,7 @@ class ColoredSlider: UIControl {
 	private var _maximumValue: Float = 1.0
 	private var _color: UIColor = UIColor.blackColor()
 	
+
 	// MARK: Computed Properties
 	
 	var value: Float {
@@ -38,8 +39,7 @@ class ColoredSlider: UIControl {
 			_backingValue = clamp(newValue, minValue: minimumValue, maxValue: maximumValue)
 			
 			// Position the thumb in the slider on value change
-			let currentValueInPercentageOfMax = ((_backingValue - _minimumValue) / (_maximumValue - _minimumValue))
-			renderer.thumbPosition = currentValueInPercentageOfMax
+			renderer.thumbPosition = valueInPercentageOfMax(_backingValue)
 		}
 	}
 	
@@ -87,7 +87,7 @@ class ColoredSlider: UIControl {
 	}
 	
 	// MARK: Custom Methods
-	func drawSubLayers() {
+	private func drawSubLayers() {
 		renderer.update(bounds)
 		renderer.stickColor = color
 		renderer.thumbFillColor = color
@@ -97,7 +97,29 @@ class ColoredSlider: UIControl {
 		layer.addSublayer(renderer.thumbLayer)
 	}
 	
+	private func valueInPercentageOfMax(value: Float) -> Float {
+		return ((value - _minimumValue) / (_maximumValue - _minimumValue))
+	}
+	
+	// MARK: Methods concerning touch tracking
 
+	override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+		return renderer.thumbLayer.frame.contains(touch.locationInView(self))
+	}
+	
+	override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
+		let locationWithinBounds = clamp(Float(touch.locationInView(self).x), minValue: 0.0, maxValue: Float(renderer.stickLayer.bounds.width))
+		
+		// Disable implicit animations
+		CATransaction.begin()
+		CATransaction.setDisableActions(true)
+		
+		self.value = (locationWithinBounds / Float(renderer.stickLayer.bounds.width)) * maximumValue
+		
+		CATransaction.commit()
+		return true
+	}
+	
 }
 
 private class ColoredSliderRenderer {
@@ -111,7 +133,7 @@ private class ColoredSliderRenderer {
 		didSet { update() }
 	}
 	
-	var thumbRadius: CGFloat = 6.5 {
+	var thumbRadius: CGFloat = 13 {
 		didSet { update() }
 	}
 	
@@ -151,9 +173,10 @@ private class ColoredSliderRenderer {
 	
 	// MARK: Custom methods
 	func update(bounds: CGRect) {
+		thumbLayer.bounds = CGRectMake(0, 0, 2*thumbRadius, 2*thumbRadius)
 		stickLayer.bounds = bounds
-		stickLayer.position = CGPoint(x: bounds.width/2.0, y: 0.0)
-		thumbLayer.position = CGPoint(x: 0.0, y: 0.0)
+		stickLayer.position = CGPoint(x: bounds.width/2.0, y: bounds.height/2)
+		thumbLayer.position = CGPoint(x: 0.0, y: bounds.height/2 + thumbRadius)
 		update()
 	}
 	
@@ -171,6 +194,8 @@ private class ColoredSliderRenderer {
 			startAngle: 0.0,
 			endAngle: 2*CGFloat(M_PI),
 			clockwise: true).CGPath
+		
+		
 	}
 	
 	private func update() {
@@ -183,7 +208,7 @@ private class ColoredSliderRenderer {
 	}
 	
 	private func positionThumb() {
-		thumbLayer.position.x = CGFloat(thumbPosition) * stickLayer.bounds.width
+		thumbLayer.position.x = (CGFloat(thumbPosition) * stickLayer.bounds.width)
 	}
 	
 }
