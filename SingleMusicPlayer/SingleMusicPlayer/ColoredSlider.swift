@@ -133,7 +133,7 @@ private class ColoredSliderRenderer {
 		didSet { update() }
 	}
 	
-	var thumbRadius: CGFloat = 13 {
+	var thumbRadius: CGFloat = 8 {
 		didSet { update() }
 	}
 	
@@ -164,6 +164,10 @@ private class ColoredSliderRenderer {
 		}
 	}
 	
+	var stickLength: CGFloat {
+		return stickLayer.bounds.width - (2 * thumbRadius)
+	}
+	
 	
 	
 	// MARK: Methods
@@ -173,17 +177,17 @@ private class ColoredSliderRenderer {
 	
 	// MARK: Custom methods
 	func update(bounds: CGRect) {
-		thumbLayer.bounds = CGRectMake(0, 0, 2*thumbRadius, 2*thumbRadius)
+		thumbLayer.bounds = CGRectMake(-thumbRadius, -thumbRadius, 2*thumbRadius, 2*thumbRadius)
 		stickLayer.bounds = bounds
 		stickLayer.position = CGPoint(x: bounds.width/2.0, y: bounds.height/2)
-		thumbLayer.position = CGPoint(x: 0.0, y: bounds.height/2 + thumbRadius)
+		thumbLayer.position = CGPoint(x: -thumbRadius, y: bounds.height/2)
 		update()
 	}
 	
 	private func drawStick() {
 		let path = UIBezierPath()
-		path.moveToPoint(CGPoint(x: 0.0, y: stickLayer.bounds.height/2.0))
-		path.addLineToPoint(CGPoint(x: stickLayer.bounds.width, y: stickLayer.bounds.height/2.0))
+		path.moveToPoint(CGPoint(x: thumbRadius, y: stickLayer.bounds.height/2.0))
+		path.addLineToPoint(CGPoint(x: stickLayer.bounds.width - thumbRadius, y: stickLayer.bounds.height/2.0))
 		stickLayer.path = path.CGPath
 	}
 	
@@ -194,8 +198,6 @@ private class ColoredSliderRenderer {
 			startAngle: 0.0,
 			endAngle: 2*CGFloat(M_PI),
 			clockwise: true).CGPath
-		
-		
 	}
 	
 	private func update() {
@@ -208,7 +210,7 @@ private class ColoredSliderRenderer {
 	}
 	
 	private func positionThumb() {
-		thumbLayer.position.x = (CGFloat(thumbPosition) * stickLayer.bounds.width)
+		thumbLayer.position.x = (CGFloat(thumbPosition) * stickLength) + (thumbRadius)
 	}
 	
 }
