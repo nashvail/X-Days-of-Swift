@@ -115,6 +115,7 @@ class ColoredSlider: UIControl {
 		CATransaction.setDisableActions(true)
 		
 		self.value = (locationWithinBounds / Float(renderer.stickLayer.bounds.width)) * maximumValue
+		sendActionsForControlEvents(.ValueChanged)
 		
 		CATransaction.commit()
 		return true
