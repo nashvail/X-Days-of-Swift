@@ -83,7 +83,8 @@ class ColoredSlider: UIControl {
 		self._minimumValue = minimumValue
 		self._maximumValue = maximumValue
 		self._color = color
-		self._backingValue = minimumValue
+		// Initially place the thumb at the center of the stick
+		self.value = (maximumValue + minimumValue) / 2
 	}
 	
 	// MARK: Custom Methods
@@ -108,13 +109,13 @@ class ColoredSlider: UIControl {
 	}
 	
 	override func continueTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-		let locationWithinBounds = clamp(Float(touch.locationInView(self).x), minValue: 0.0, maxValue: Float(renderer.stickLayer.bounds.width))
+		let locationWithinBounds = clamp(Float(touch.locationInView(self).x), minValue: 0.0, maxValue: Float(renderer.stickLength))
 		
 		// Disable implicit animations
 		CATransaction.begin()
 		CATransaction.setDisableActions(true)
 		
-		self.value = (locationWithinBounds / Float(renderer.stickLayer.bounds.width)) * maximumValue
+		self.value = minimumValue + ((locationWithinBounds / Float(renderer.stickLength)) * (maximumValue - minimumValue))
 		sendActionsForControlEvents(.ValueChanged)
 		
 		CATransaction.commit()
