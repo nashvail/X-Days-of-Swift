@@ -135,7 +135,7 @@ private class ColoredSliderRenderer {
 		didSet { update() }
 	}
 	
-	var thumbRadius: CGFloat = 8 {
+	var thumbRadius: CGFloat = 10 {
 		didSet { update() }
 	}
 	

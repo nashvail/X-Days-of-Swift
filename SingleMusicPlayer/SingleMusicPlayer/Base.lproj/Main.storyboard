@@ -111,7 +111,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92b-Zz-HP4" userLabel="Colored Slider">
-                                <rect key="frame" x="200" y="520" width="200" height="20"/>
+                                <rect key="frame" x="206" y="520" width="200" height="20"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="0bp-0Q-get"/>
@@ -119,7 +119,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="speaker_dark" translatesAutoresizingMaskIntoConstraints="NO" id="lVy-MS-qHo">
-                                <rect key="frame" x="159" y="520" width="38" height="20"/>
+                                <rect key="frame" x="165" y="520" width="38" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="aFv-bE-CbQ"/>
                                     <constraint firstAttribute="width" constant="38" id="hlT-Wg-DVm"/>
@@ -130,7 +130,7 @@
                         <constraints>
                             <constraint firstItem="QUI-il-zyY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="DEq-42-N2p"/>
                             <constraint firstItem="qrc-cp-Tpw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ESn-nb-yHH"/>
-                            <constraint firstItem="92b-Zz-HP4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IHH-kY-Kwx"/>
+                            <constraint firstItem="92b-Zz-HP4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="6" id="IHH-kY-Kwx"/>
                             <constraint firstItem="tLw-y7-LKU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Q6r-Bx-yeS"/>
                             <constraint firstItem="slF-HD-47r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="SJl-Xt-qXG"/>
                             <constraint firstItem="lVy-MS-qHo" firstAttribute="top" secondItem="92b-Zz-HP4" secondAttribute="top" id="TVA-Z4-bGg"/>
