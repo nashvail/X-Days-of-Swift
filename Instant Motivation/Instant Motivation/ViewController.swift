@@ -30,7 +30,9 @@ class ViewController: UIViewController {
 	var audioPlayer: AVAudioPlayer = AVAudioPlayer()
 	
 	
+	// MARK: IB Porperties
 	@IBOutlet var motivationImage: UIImageView!
+	@IBOutlet var defaultImage: UIImageView!
 	
 	// MARK: Overriden methods
 
@@ -56,13 +58,14 @@ class ViewController: UIViewController {
 	
 	func playGIF() {
 		isPlaying = true
+		hideDefaultImage()
 		startGIFAnimation()
 		startGIFAudio()
 	}
 	
 	func stopGIF() {
 		stopGIFAnimation()
-		resetToDefaultFrame()
+		showDefaultImage()
 		isPlaying = false
 	}
 	
@@ -91,9 +94,13 @@ class ViewController: UIViewController {
 		let properFrameNumber = frameNumber % randomGIF.numFrames
 		motivationImage.image = UIImage(named: "\(randomGIF.imageNamePrefix)\(properFrameNumber).png")
 	}
+
+	func hideDefaultImage() {
+		fadeOut(defaultImage.layer)
+	}
 	
-	func resetToDefaultFrame() {
-		motivationImage.image = UIImage(named: "default_frame.png")
+	func showDefaultImage() {
+		fadeIn(defaultImage.layer)
 	}
 	
 	func randomNumber(range: Range<Int>) -> Int {
@@ -102,13 +109,12 @@ class ViewController: UIViewController {
 		return Int(arc4random_uniform(UInt32(max - min))) + min
 	}
 	
-	// Initializes the audio file that is to be played in the app
+	// Initializes the audio file that is to be played
 	func initAudioFile(fileName fileName: String, type: String) {
 		do {
 			try audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(fileName, ofType: type)!))
 			audioPlayer.volume = 0.7
 		} catch {
-			// Handle any errors if happens
 			print("There was an error retrieving the file, maybe it doesn't exist")
 		}
 	}
@@ -122,6 +128,29 @@ class ViewController: UIViewController {
 				playGIF()
 			}
 		}
+	}
+	
+	// MARK: Animation methods 
+	func fadeOut(layer: CALayer) {
+		let fadeOut = CABasicAnimation(keyPath: "opacity")
+		fadeOut.fromValue = 1.0
+		fadeOut.toValue = 0.0
+		fadeOut.duration = 0.3
+		fadeOut.fillMode = kCAFillModeForwards
+		fadeOut.removedOnCompletion = false
+		
+		layer.addAnimation(fadeOut, forKey: nil)
+	}
+	
+	func fadeIn(layer: CALayer) {
+		let fadeIn = CABasicAnimation(keyPath: "opacity")
+		fadeIn.fromValue = 0.0
+		fadeIn.toValue = 1.0
+		fadeIn.duration = 0.3
+		fadeIn.fillMode = kCAFillModeForwards
+		fadeIn.removedOnCompletion = false
+		
+		layer.addAnimation(fadeIn, forKey: nil)
 	}
 	
 	

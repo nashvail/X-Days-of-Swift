@@ -20,16 +20,23 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_frame.png" translatesAutoresizingMaskIntoConstraints="NO" id="Evy-nb-ta0" userLabel="Container">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_frame.png" translatesAutoresizingMaskIntoConstraints="NO" id="1aP-Yc-beQ" userLabel="DefaultImage">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1aP-Yc-beQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4DB-mX-E1B"/>
                             <constraint firstAttribute="trailing" secondItem="Evy-nb-ta0" secondAttribute="trailing" id="8yf-ZS-wV3"/>
                             <constraint firstItem="Evy-nb-ta0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LXC-qy-7D9"/>
                             <constraint firstItem="Evy-nb-ta0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MjO-ZJ-S6Q"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1aP-Yc-beQ" secondAttribute="bottom" id="Txo-R5-VsV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Evy-nb-ta0" secondAttribute="bottom" id="dyc-Iv-ePc"/>
                             <constraint firstItem="Evy-nb-ta0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hGR-wm-Vhd"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Evy-nb-ta0" secondAttribute="bottom" id="jhE-Bn-IWM"/>
+                            <constraint firstItem="1aP-Yc-beQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="js3-jZ-zEm"/>
                             <constraint firstItem="Evy-nb-ta0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="nNH-NI-0w6"/>
+                            <constraint firstAttribute="trailing" secondItem="1aP-Yc-beQ" secondAttribute="trailing" id="tnV-DL-ahE"/>
                             <constraint firstAttribute="trailing" secondItem="Evy-nb-ta0" secondAttribute="trailing" id="xIs-cQ-Shy"/>
                         </constraints>
                         <variation key="default">
@@ -39,6 +46,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="defaultImage" destination="1aP-Yc-beQ" id="aJC-6Y-vwA"/>
                         <outlet property="motivationImage" destination="Evy-nb-ta0" id="g8n-NR-5Fe"/>
                     </connections>
                 </viewController>
