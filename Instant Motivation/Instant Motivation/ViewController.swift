@@ -19,8 +19,11 @@ class ViewController: UIViewController {
 	// MARK: GIF Properties
 	var GIFs = [
 		GIF(name: "Just Do It", imageNamePrefix: "justdoit_1_frame_", numFrames: 60, fps: 32, audio: AVAudioFile(name: "justdoit", type: "aiff")),
-		GIF(name: "Make your dreams come true", imageNamePrefix: "justdoit_2_frame_", numFrames: 62, fps: 26, audio: AVAudioFile(name: "makeyourdreamscometrue", type: "aiff"))
-		]
+		GIF(name: "Make your dreams come true", imageNamePrefix: "justdoit_2_frame_", numFrames: 62, fps: 26, audio: AVAudioFile(name: "makeyourdreamscometrue", type: "aiff")),
+		GIF(name: "Do it", imageNamePrefix: "justdoit_3_frame_", numFrames: 48, fps: 30, audio: AVAudioFile(name: "doit", type:"aiff")),
+		GIF(name: "Yes you can", imageNamePrefix: "justdoit_4_frame_", numFrames: 31, fps: 25, audio: AVAudioFile(name: "yesyoucan", type:"aiff"))
+	]
+	
 	var randomGIF: GIF!
 	
 	// MARK: Audio Properties 
@@ -33,7 +36,6 @@ class ViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -53,9 +55,9 @@ class ViewController: UIViewController {
 	}
 	
 	func playGIF() {
+		isPlaying = true
 		startGIFAnimation()
 		startGIFAudio()
-		isPlaying = true
 	}
 	
 	func stopGIF() {
@@ -94,7 +96,7 @@ class ViewController: UIViewController {
 		motivationImage.image = UIImage(named: "default_frame.png")
 	}
 	
-	func randomNumber(range: Range<Int> = 1...6) -> Int {
+	func randomNumber(range: Range<Int>) -> Int {
 		let min = range.startIndex
 		let max = range.endIndex
 		return Int(arc4random_uniform(UInt32(max - min))) + min
@@ -104,6 +106,7 @@ class ViewController: UIViewController {
 	func initAudioFile(fileName fileName: String, type: String) {
 		do {
 			try audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(fileName, ofType: type)!))
+			audioPlayer.volume = 0.7
 		} catch {
 			// Handle any errors if happens
 			print("There was an error retrieving the file, maybe it doesn't exist")
