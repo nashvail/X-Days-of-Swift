@@ -12,6 +12,7 @@ struct GIF {
 	var name: String
 	var imageNamePrefix: String
 	var numFrames: Int
+	var fps: Double
 	var audio: AVAudioFile
 }
 

@@ -13,12 +13,14 @@ class ViewController: UIViewController {
 	
 	// MARK: Animation Properties
 	var timer = NSTimer()
-	let fps:Double = 35
 	var currentFrame = 0
 	var isPlaying = false
 	
 	// MARK: GIF Properties
-	var GIFs = [GIF(name: "Just Do It", imageNamePrefix: "justdoit_1_frame_", numFrames: 60, audio: AVAudioFile(name: "first", type: "aiff"))]
+	var GIFs = [
+		GIF(name: "Just Do It", imageNamePrefix: "justdoit_1_frame_", numFrames: 60, fps: 32, audio: AVAudioFile(name: "justdoit", type: "aiff")),
+		GIF(name: "Make your dreams come true", imageNamePrefix: "justdoit_2_frame_", numFrames: 62, fps: 26, audio: AVAudioFile(name: "makeyourdreamscometrue", type: "aiff"))
+		]
 	var randomGIF: GIF!
 	
 	// MARK: Audio Properties 
@@ -32,8 +34,6 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		randomGIF = GIFs[0]
-		initAudioFile(fileName: randomGIF.audio.name, type: randomGIF.audio.type)
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -47,6 +47,11 @@ class ViewController: UIViewController {
 	
 	// MARK: Custom methods
 	
+	func initializeRandomGIF() {
+		randomGIF = GIFs[randomNumber(0...(GIFs.count-1))]
+		initAudioFile(fileName: randomGIF.audio.name, type: randomGIF.audio.type)
+	}
+	
 	func playGIF() {
 		startGIFAnimation()
 		startGIFAudio()
@@ -55,12 +60,13 @@ class ViewController: UIViewController {
 	
 	func stopGIF() {
 		stopGIFAnimation()
+		resetToDefaultFrame()
 		isPlaying = false
 	}
 	
 	func startGIFAnimation() -> Void {
 		currentFrame = 0
-		timer = NSTimer.scheduledTimerWithTimeInterval(1/fps, target: self, selector: #selector(ViewController.animateImage), userInfo: nil, repeats: true)
+		timer = NSTimer.scheduledTimerWithTimeInterval(1/randomGIF.fps, target: self, selector: #selector(ViewController.animateImage), userInfo: nil, repeats: true)
 	}
 	
 	func stopGIFAnimation() {
@@ -84,12 +90,22 @@ class ViewController: UIViewController {
 		motivationImage.image = UIImage(named: "\(randomGIF.imageNamePrefix)\(properFrameNumber).png")
 	}
 	
+	func resetToDefaultFrame() {
+		motivationImage.image = UIImage(named: "default_frame.png")
+	}
+	
+	func randomNumber(range: Range<Int> = 1...6) -> Int {
+		let min = range.startIndex
+		let max = range.endIndex
+		return Int(arc4random_uniform(UInt32(max - min))) + min
+	}
+	
 	// Initializes the audio file that is to be played in the app
 	func initAudioFile(fileName fileName: String, type: String) {
 		do {
 			try audioPlayer = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(fileName, ofType: type)!))
 		} catch {
-			// Handle any errors if this happens
+			// Handle any errors if happens
 			print("There was an error retrieving the file, maybe it doesn't exist")
 		}
 	}
@@ -99,6 +115,7 @@ class ViewController: UIViewController {
 	override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
 		if event?.subtype == UIEventSubtype.MotionShake{
 			if !isPlaying {
+				initializeRandomGIF()
 				playGIF()
 			}
 		}

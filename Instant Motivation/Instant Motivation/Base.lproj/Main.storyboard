@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="justdoit_1_frame_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="Evy-nb-ta0" userLabel="Container">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_frame.png" translatesAutoresizingMaskIntoConstraints="NO" id="Evy-nb-ta0" userLabel="Container">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
@@ -48,6 +48,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="justdoit_1_frame_0.png" width="718" height="404"/>
+        <image name="default_frame.png" width="744" height="682"/>
     </resources>
 </document>
