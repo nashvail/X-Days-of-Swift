@@ -33,12 +33,16 @@ class ViewController: UIViewController {
 	// MARK: IB Porperties
 	@IBOutlet var motivationImage: UIImageView!
 	@IBOutlet var defaultImage: UIImageView!
+	@IBOutlet var shakePromptor: CircleView!
 	
 	// MARK: Overriden methods
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		wobbleShakePromptor()
+		let _ = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(ViewController.wobbleShakePromptor), userInfo: nil, repeats: true)
 	}
+	
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -58,14 +62,14 @@ class ViewController: UIViewController {
 	
 	func playGIF() {
 		isPlaying = true
-		hideDefaultImage()
+		hideInitialScreen()
 		startGIFAnimation()
 		startGIFAudio()
 	}
 	
 	func stopGIF() {
 		stopGIFAnimation()
-		showDefaultImage()
+		showInitialScreen()
 		isPlaying = false
 	}
 	
@@ -95,18 +99,24 @@ class ViewController: UIViewController {
 		motivationImage.image = UIImage(named: "\(randomGIF.imageNamePrefix)\(properFrameNumber).png")
 	}
 
-	func hideDefaultImage() {
+	func hideInitialScreen() {
 		fadeOut(defaultImage.layer)
+		fadeOut(shakePromptor.layer)
 	}
 	
-	func showDefaultImage() {
+	func showInitialScreen() {
 		fadeIn(defaultImage.layer)
+		fadeIn(shakePromptor.layer)
 	}
 	
 	func randomNumber(range: Range<Int>) -> Int {
 		let min = range.startIndex
 		let max = range.endIndex
 		return Int(arc4random_uniform(UInt32(max - min))) + min
+	}
+	
+	func wobbleShakePromptor() {
+		wobble(shakePromptor.layer)
 	}
 	
 	// Initializes the audio file that is to be played
@@ -152,6 +162,18 @@ class ViewController: UIViewController {
 		
 		layer.addAnimation(fadeIn, forKey: nil)
 	}
+	
+	func wobble(layer: CALayer) {
+		let wobble = CAKeyframeAnimation(keyPath: "transform.rotation")
+		wobble.duration = 0.25
+		wobble.repeatCount = 4
+		wobble.values = [0.0, -M_PI_2/4, 0.0, M_PI_2/4, 0.0]
+		wobble.keyTimes = [0.0, 0.25, 0.5, 0.75, 1.0]
+		
+		layer.addAnimation(wobble, forKey: nil)
+	}
+	
+	
 	
 	
 }

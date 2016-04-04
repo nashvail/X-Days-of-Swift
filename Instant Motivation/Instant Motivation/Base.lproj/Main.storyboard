@@ -23,13 +23,34 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_frame.png" translatesAutoresizingMaskIntoConstraints="NO" id="1aP-Yc-beQ" userLabel="DefaultImage">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f3C-14-IR1" userLabel="Shake Promptor" customClass="CircleView" customModule="Instant_Motivation" customModuleProvider="target">
+                                <rect key="frame" x="250" y="250" width="100" height="100"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_iphone" translatesAutoresizingMaskIntoConstraints="NO" id="l0Y-5G-Btv">
+                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="puz-az-GQn"/>
+                                            <constraint firstAttribute="width" constant="100" id="t1P-F2-lc0"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="l0Y-5G-Btv" firstAttribute="centerX" secondItem="f3C-14-IR1" secondAttribute="centerX" id="23S-ZP-NjW"/>
+                                    <constraint firstAttribute="width" constant="100" id="31f-1A-x2m"/>
+                                    <constraint firstAttribute="height" constant="100" id="NVR-o6-KV7"/>
+                                    <constraint firstItem="l0Y-5G-Btv" firstAttribute="centerY" secondItem="f3C-14-IR1" secondAttribute="centerY" id="ZHu-3l-YBp"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="f3C-14-IR1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3j9-Qu-0wB"/>
                             <constraint firstItem="1aP-Yc-beQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4DB-mX-E1B"/>
                             <constraint firstAttribute="trailing" secondItem="Evy-nb-ta0" secondAttribute="trailing" id="8yf-ZS-wV3"/>
                             <constraint firstItem="Evy-nb-ta0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="LXC-qy-7D9"/>
                             <constraint firstItem="Evy-nb-ta0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="MjO-ZJ-S6Q"/>
+                            <constraint firstItem="f3C-14-IR1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="R4n-g8-USp"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="1aP-Yc-beQ" secondAttribute="bottom" id="Txo-R5-VsV"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Evy-nb-ta0" secondAttribute="bottom" id="dyc-Iv-ePc"/>
                             <constraint firstItem="Evy-nb-ta0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hGR-wm-Vhd"/>
@@ -48,6 +69,7 @@
                     <connections>
                         <outlet property="defaultImage" destination="1aP-Yc-beQ" id="aJC-6Y-vwA"/>
                         <outlet property="motivationImage" destination="Evy-nb-ta0" id="g8n-NR-5Fe"/>
+                        <outlet property="shakePromptor" destination="f3C-14-IR1" id="eXp-bN-LcV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -57,5 +79,6 @@
     </scenes>
     <resources>
         <image name="default_frame.png" width="744" height="682"/>
+        <image name="icon_iphone" width="31" height="48"/>
     </resources>
 </document>

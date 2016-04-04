@@ -154,6 +154,8 @@
 		C67C3B271CB0D267004CA019 /* justdoit_2_frame_60.png in Resources */ = {isa = PBXBuildFile; fileRef = C67C3AE91CB0D267004CA019 /* justdoit_2_frame_60.png */; };
 		C67C3B281CB0D267004CA019 /* justdoit_2_frame_61.png in Resources */ = {isa = PBXBuildFile; fileRef = C67C3AEA1CB0D267004CA019 /* justdoit_2_frame_61.png */; };
 		C67C3B2E1CB0D996004CA019 /* default_frame.png in Resources */ = {isa = PBXBuildFile; fileRef = C67C3B2D1CB0D996004CA019 /* default_frame.png */; };
+		C67DF0101CB21F4400D88FF2 /* Icons.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C67DF00F1CB21F4400D88FF2 /* Icons.xcassets */; };
+		C67DF0161CB224DE00D88FF2 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67DF0151CB224DE00D88FF2 /* CircleView.swift */; };
 		C6F6DA101CAFD26B005EAAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6DA0F1CAFD26B005EAAAD /* AppDelegate.swift */; };
 		C6F6DA121CAFD26B005EAAAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6F6DA111CAFD26B005EAAAD /* ViewController.swift */; };
 		C6F6DA151CAFD26B005EAAAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6F6DA131CAFD26B005EAAAD /* Main.storyboard */; };
@@ -381,6 +383,8 @@
 		C67C3AE91CB0D267004CA019 /* justdoit_2_frame_60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = justdoit_2_frame_60.png; sourceTree = "<group>"; };
 		C67C3AEA1CB0D267004CA019 /* justdoit_2_frame_61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = justdoit_2_frame_61.png; sourceTree = "<group>"; };
 		C67C3B2D1CB0D996004CA019 /* default_frame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_frame.png; sourceTree = "<group>"; };
+		C67DF00F1CB21F4400D88FF2 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Icons.xcassets; path = ../Icons.xcassets; sourceTree = "<group>"; };
+		C67DF0151CB224DE00D88FF2 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		C6F6DA0C1CAFD26B005EAAAD /* Instant Motivation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant Motivation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F6DA0F1CAFD26B005EAAAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6F6DA111CAFD26B005EAAAD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -646,9 +650,18 @@
 			name = Second;
 			sourceTree = "<group>";
 		};
+		C67DF0111CB21F5100D88FF2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C663BE911CB049B6009D6B9D /* GIFModel.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		C6F6DA031CAFD26B005EAAAD = {
 			isa = PBXGroup;
 			children = (
+				C67DF0151CB224DE00D88FF2 /* CircleView.swift */,
 				C6F6DA0E1CAFD26B005EAAAD /* Instant Motivation */,
 				C6F6DA0D1CAFD26B005EAAAD /* Products */,
 			);
@@ -673,7 +686,8 @@
 				C6F6DA131CAFD26B005EAAAD /* Main.storyboard */,
 				C6F6DA181CAFD26B005EAAAD /* LaunchScreen.storyboard */,
 				C6F6DA1B1CAFD26B005EAAAD /* Info.plist */,
-				C663BE911CB049B6009D6B9D /* GIFModel.swift */,
+				C67DF0111CB21F5100D88FF2 /* Models */,
+				C67DF00F1CB21F4400D88FF2 /* Icons.xcassets */,
 			);
 			path = "Instant Motivation";
 			sourceTree = "<group>";
@@ -916,6 +930,7 @@
 				C665C9EF1CB14645001B24C3 /* doit.aiff in Resources */,
 				C665CA151CB1500A001B24C3 /* justdoit_4_frame_3.png in Resources */,
 				C6F6DA991CAFD2E9005EAAAD /* justdoit_1_frame_45.png in Resources */,
+				C67DF0101CB21F4400D88FF2 /* Icons.xcassets in Resources */,
 				C665CA1C1CB1500A001B24C3 /* justdoit_4_frame_10.png in Resources */,
 				C6F6DA9B1CAFD2E9005EAAAD /* justdoit_1_frame_47.png in Resources */,
 				C67C3B061CB0D267004CA019 /* justdoit_2_frame_27.png in Resources */,
@@ -1059,6 +1074,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C67DF0161CB224DE00D88FF2 /* CircleView.swift in Sources */,
 				C663BE921CB049B6009D6B9D /* GIFModel.swift in Sources */,
 				C6F6DA121CAFD26B005EAAAD /* ViewController.swift in Sources */,
 				C6F6DA101CAFD26B005EAAAD /* AppDelegate.swift in Sources */,
