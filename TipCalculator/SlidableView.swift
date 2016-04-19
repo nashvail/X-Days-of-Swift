@@ -14,40 +14,32 @@ class SlidableView: UIControl {
 	
 	private var _backingValue: Float = 0.0
 	
-	var valueLabel: UILabel = UILabel()
-	
-	// MARK: Computed properties 
+	// MARK: Computed properties
 	
 	var value: Float {
 		get { return _backingValue }
 		set {
 			_backingValue = newValue
-			updateValueLabel(newValue)
 		}
 	}
+	
+	/** Number of points the finger is dragged across the view to increment or decrement the value by 1 */
+	var step: Float = 15.0
 	
 	// MARK: Methods
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		addValueLabel(frame)
+		//addValueLabel(frame)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	func addValueLabel(frame: CGRect) {
-		valueLabel = UILabel(frame: frame)
-		valueLabel.text = "\(value)"
-		valueLabel.textAlignment = .Center
-		valueLabel.textColor = UIColor.whiteColor()
-		valueLabel.backgroundColor = UIColor.clearColor()
-		valueLabel.font = UIFont(name: "Avenir Next", size: 24.0)
-		
-		self.addSubview(valueLabel)
-		
+	convenience init(frame: CGRect, step: Float) {
+		self.init(frame: frame)
+		self.step = step
 	}
-	
 	
 	// MARK: Methods for tracking touch on the view 
 	
@@ -67,22 +59,17 @@ class SlidableView: UIControl {
 		
 		if result.shouldChange {
 			value = value + (Float(result.multiplier) * 1)
+			if value <= 0 {
+				value = 0
+			}
+			sendActionsForControlEvents(.ValueChanged)
 		}
 	
 		return true
 		
 	}
 	
-	override func endTrackingWithTouch(touch: UITouch?, withEvent event: UIEvent?) {
-	}
-	
 	// MARK: Custom methods
-	
-	func updateValueLabel(value: Float) {
-		if value >= 0 {
-  		valueLabel.text = "\(value)"
-		}
-	}
 	
 	func touchX(touch: UITouch) -> CGFloat {
 		return touch.locationInView(self).x
@@ -93,12 +80,10 @@ class SlidableView: UIControl {
 	}
 	
 	func valueShouldChange(totalPointsDragged: Float) -> (shouldChange: Bool, multiplier: Int) {
-		let N: Float = 15.0
-		
-		let K = (100 * totalPointsDragged) / N
+		let K = (100 * totalPointsDragged) / step
 		let section = Int(K/100)
 		
-		if section != currentSection { // So the section has changed, now its for us to decide whether increased or decreased
+		if section != currentSection {
 			if section > currentSection {
 				currentSection = section
 				return (true, 1)
