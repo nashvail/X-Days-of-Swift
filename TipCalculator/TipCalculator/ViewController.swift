@@ -11,18 +11,29 @@ import UIKit
 class ViewController: UIViewController {
 	
 	// MARK: IBOutlets
-	@IBOutlet var tempPlaceHolder: UIView!
-	@IBOutlet var testerLabel: UILabel!
+	@IBOutlet var label_amountDisplay: UILabel!
+	@IBOutlet var label_tipPercentageDisplay: UILabel!
+	@IBOutlet var label_tipDisplay: UILabel!
+	@IBOutlet var label_numSplitDisplay: UILabel!
+	
+	@IBOutlet var placeHolderTipPercentageSelector: UIView!
+	@IBOutlet var placeHolderNumSplitSelector: UIView!
+	
+	
+	
+	@IBAction func addDigitToDisplay(sender: AnyObject) {
+		print("A button on keypad was pressed")
+	}
 	
 	var tempSlidableView: SlidableView!
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		tempSlidableView = SlidableView(frame: tempPlaceHolder.bounds, step: 20)
-		tempPlaceHolder.addSubview(tempSlidableView)
+		//tempSlidableView = SlidableView(frame: tempPlaceHolder.bounds)
+		//tempPlaceHolder.addSubview(tempSlidableView)
 		
-		tempSlidableView.addTarget(self, action: #selector(ViewController.updateTesterLabel), forControlEvents: .ValueChanged)
+		//tempSlidableView.addTarget(self, action: #selector(ViewController.updateTesterLabel), forControlEvents: .ValueChanged)
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -33,8 +44,8 @@ class ViewController: UIViewController {
 	// MARK: Custom methods
 	
 	func updateTesterLabel() {
-		let currentSlidableViewValue = Int(tempSlidableView.value)
-		testerLabel.text = "\(currentSlidableViewValue)"
+		//let currentSlidableViewValue = Int(tempSlidableView.value)
+		//testerLabel.text = "\(currentSlidableViewValue)"
 	}
 
 
