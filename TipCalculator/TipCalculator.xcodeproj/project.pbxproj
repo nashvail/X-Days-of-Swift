@@ -13,6 +13,8 @@
 		C6ACC19F1CC53EF80062389D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6ACC19E1CC53EF80062389D /* Assets.xcassets */; };
 		C6ACC1A21CC53EF80062389D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6ACC1A01CC53EF80062389D /* LaunchScreen.storyboard */; };
 		C6ACC1AA1CC5414D0062389D /* SlidableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ACC1A91CC5414D0062389D /* SlidableView.swift */; };
+		C6FDEB4F1CC777B50070D0D4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FDEB4E1CC777B50070D0D4 /* GradientView.swift */; };
+		C6FDEB511CC780280070D0D4 /* BottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6FDEB501CC780280070D0D4 /* BottomBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		C6ACC1A11CC53EF80062389D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6ACC1A31CC53EF80062389D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6ACC1A91CC5414D0062389D /* SlidableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidableView.swift; sourceTree = "<group>"; };
+		C6FDEB4E1CC777B50070D0D4 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		C6FDEB501CC780280070D0D4 /* BottomBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBorder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,8 @@
 		C6ACC18B1CC53EF80062389D = {
 			isa = PBXGroup;
 			children = (
+				C6FDEB4E1CC777B50070D0D4 /* GradientView.swift */,
+				C6FDEB501CC780280070D0D4 /* BottomBorder.swift */,
 				C6ACC1A91CC5414D0062389D /* SlidableView.swift */,
 				C6ACC1961CC53EF80062389D /* TipCalculator */,
 				C6ACC1951CC53EF80062389D /* Products */,
@@ -139,8 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6FDEB511CC780280070D0D4 /* BottomBorder.swift in Sources */,
 				C6ACC1AA1CC5414D0062389D /* SlidableView.swift in Sources */,
 				C6ACC19A1CC53EF80062389D /* ViewController.swift in Sources */,
+				C6FDEB4F1CC777B50070D0D4 /* GradientView.swift in Sources */,
 				C6ACC1981CC53EF80062389D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +299,7 @@
 				C6ACC1A81CC53EF80062389D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
