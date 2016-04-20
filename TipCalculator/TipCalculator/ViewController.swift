@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 	@IBOutlet var label_tipPercentageDisplay: UILabel!
 	@IBOutlet var label_tipDisplay: UILabel!
 	@IBOutlet var label_numSplitDisplay: UILabel!
+	@IBOutlet var label_currentTipDisplay: UILabel!
 	
 	@IBOutlet var placeHolderTipPercentageSelector: UIView!
 	@IBOutlet var placeHolderNumSplitSelector: UIView!
@@ -25,13 +26,24 @@ class ViewController: UIViewController {
 		print("A button on keypad was pressed")
 	}
 	
-	var tempSlidableView: SlidableView!
+	// MARK: Slidable Views
+	var tipPercentageSlidableView: SlidableView!
+	var numSplitSlidableView: SlidableView!
+
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		//tempSlidableView = SlidableView(frame: tempPlaceHolder.bounds)
-		//tempPlaceHolder.addSubview(tempSlidableView)
+		
+		tipPercentageSlidableView = SlidableView(frame: placeHolderTipPercentageSelector.bounds)
+		numSplitSlidableView = SlidableView(frame: placeHolderNumSplitSelector.bounds, step: 30)
+		
+		placeHolderTipPercentageSelector.addSubview(tipPercentageSlidableView)
+		placeHolderNumSplitSelector.addSubview(numSplitSlidableView)
+		
+		// Add slider value change listeners to the slidable views 
+		tipPercentageSlidableView.addTarget(self, action: #selector(ViewController.updateTipPercentage), forControlEvents: .ValueChanged)
+		numSplitSlidableView.addTarget(self, action: #selector(ViewController.updateNumSplits), forControlEvents: .ValueChanged)
 		
 		//tempSlidableView.addTarget(self, action: #selector(ViewController.updateTesterLabel), forControlEvents: .ValueChanged)
 	}
@@ -45,13 +57,15 @@ class ViewController: UIViewController {
 		return UIStatusBarStyle.LightContent
 	}
 	
-	// MARK: Custom methods
+	// MARK: Slidable view value change listeners
 	
-	func updateTesterLabel() {
-		//let currentSlidableViewValue = Int(tempSlidableView.value)
-		//testerLabel.text = "\(currentSlidableViewValue)"
+	func updateTipPercentage() {
+		print(tipPercentageSlidableView.value)
 	}
-
+	
+	func updateNumSplits() {
+		print(numSplitSlidableView.value)
+	}
 
 }
 
