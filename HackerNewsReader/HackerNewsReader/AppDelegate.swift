@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  TipCalculator
+//  HackerNewsReader
 //
-//  Created by Nash Vail on 18/04/16.
+//  Created by Nash Vail on 06/05/16.
 //  Copyright © 2016 Nishant Verma ( Nash Vail ). All rights reserved.
 //
 

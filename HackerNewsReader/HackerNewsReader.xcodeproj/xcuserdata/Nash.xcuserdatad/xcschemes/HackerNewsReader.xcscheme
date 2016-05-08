@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C6ACC1931CC53EF80062389D"
-               BuildableName = "TipCalculator.app"
-               BlueprintName = "TipCalculator"
-               ReferencedContainer = "container:TipCalculator.xcodeproj">
+               BlueprintIdentifier = "C6E728E61CDCF90600EA14AC"
+               BuildableName = "HackerNewsReader.app"
+               BlueprintName = "HackerNewsReader"
+               ReferencedContainer = "container:HackerNewsReader.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C6ACC1931CC53EF80062389D"
-            BuildableName = "TipCalculator.app"
-            BlueprintName = "TipCalculator"
-            ReferencedContainer = "container:TipCalculator.xcodeproj">
+            BlueprintIdentifier = "C6E728E61CDCF90600EA14AC"
+            BuildableName = "HackerNewsReader.app"
+            BlueprintName = "HackerNewsReader"
+            ReferencedContainer = "container:HackerNewsReader.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C6ACC1931CC53EF80062389D"
-            BuildableName = "TipCalculator.app"
-            BlueprintName = "TipCalculator"
-            ReferencedContainer = "container:TipCalculator.xcodeproj">
+            BlueprintIdentifier = "C6E728E61CDCF90600EA14AC"
+            BuildableName = "HackerNewsReader.app"
+            BlueprintName = "HackerNewsReader"
+            ReferencedContainer = "container:HackerNewsReader.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C6ACC1931CC53EF80062389D"
-            BuildableName = "TipCalculator.app"
-            BlueprintName = "TipCalculator"
-            ReferencedContainer = "container:TipCalculator.xcodeproj">
+            BlueprintIdentifier = "C6E728E61CDCF90600EA14AC"
+            BuildableName = "HackerNewsReader.app"
+            BlueprintName = "HackerNewsReader"
+            ReferencedContainer = "container:HackerNewsReader.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
