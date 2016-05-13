@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MARK: Global vars 
+var currentStoryUrl: String!
+
 class ViewController: UIViewController, UITableViewDelegate {
 	
 	// MARK: IBOutlets
@@ -46,12 +49,10 @@ class ViewController: UIViewController, UITableViewDelegate {
 	
 	override func viewWillAppear(animated: Bool) {
 		navigationController?.setNavigationBarHidden(true, animated: true)
-		navigationController?.hidesBarsOnSwipe = false
 	}
 	
 	override func viewDidDisappear(animated: Bool) {
 		navigationController?.setNavigationBarHidden(false, animated: true)
-		navigationController?.hidesBarsOnSwipe = true
 	}
 	
 	
@@ -75,6 +76,10 @@ class ViewController: UIViewController, UITableViewDelegate {
 	
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
 		return 84.0
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		currentStoryUrl = stories[indexPath.row]["url"]
 	}
 	
 	// MARK: JSON methods 
@@ -113,6 +118,7 @@ class ViewController: UIViewController, UITableViewDelegate {
 	func urlDomain(url: String) -> String {
 		return NSURL(string: url)!.host!
 	}
+
 	
 }
 

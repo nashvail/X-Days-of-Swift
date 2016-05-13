@@ -10,10 +10,29 @@ import UIKit
 
 class StoryViewController: UIViewController {
 
+	@IBOutlet var webView_story: UIWebView!
   override func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
+		
+		if currentStoryUrl != nil {
+			let url = NSURL(string: currentStoryUrl)
+			let task = NSURLSession.sharedSession().dataTaskWithURL(url!, completionHandler: {(data, response, error) -> Void in
+				
+				if let urlContent = data {
+					let webContent = NSString(data: urlContent, encoding: NSUTF8StringEncoding)
+					// Will dispatch the queue and end everything as soonView as the data is downloaded
+					dispatch_async(dispatch_get_main_queue(), {
+						self.webView_story.loadHTMLString(String(webContent!), baseURL: nil)
+					})
+				}
+			})
+			
+			task.resume()
+			
+		}
+		
 	}
 
   override func didReceiveMemoryWarning() {

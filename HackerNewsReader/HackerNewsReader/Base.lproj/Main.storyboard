@@ -92,7 +92,7 @@
                                             <outlet property="label_articleSource" destination="UoO-Ye-2n7" id="jgN-FY-Gc1"/>
                                             <outlet property="label_articleTitle" destination="736-zi-J5p" id="h9N-nM-XI8"/>
                                             <outlet property="label_articleVotes" destination="GG5-MV-PUv" id="em2-XU-y3o"/>
-                                            <segue destination="NFE-KI-4U9" kind="show" id="QN4-4w-O2R"/>
+                                            <segue destination="NFE-KI-4U9" kind="show" identifier="showStory" id="QN4-4w-O2R"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -147,10 +147,10 @@
             </objects>
             <point key="canvasLocation" x="136" y="-687"/>
         </scene>
-        <!--View Controller-->
+        <!--Story View Controller-->
         <scene sceneID="Ihi-xr-MhP">
             <objects>
-                <viewController id="NFE-KI-4U9" sceneMemberID="viewController">
+                <viewController id="NFE-KI-4U9" customClass="StoryViewController" customModule="HackerNewsReader" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fdM-Iz-XEQ"/>
                         <viewControllerLayoutGuide type="bottom" id="fqh-cl-5NE"/>
@@ -158,8 +158,29 @@
                     <view key="view" contentMode="scaleToFill" id="gmd-uO-2dj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6P-eF-QAu">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fqh-cl-5NE" firstAttribute="top" secondItem="C6P-eF-QAu" secondAttribute="bottom" id="2YW-Zl-LgR"/>
+                            <constraint firstAttribute="trailing" secondItem="C6P-eF-QAu" secondAttribute="trailing" id="Gm8-5A-piN"/>
+                            <constraint firstItem="C6P-eF-QAu" firstAttribute="leading" secondItem="gmd-uO-2dj" secondAttribute="leading" id="NRh-Pb-6zu"/>
+                            <constraint firstItem="C6P-eF-QAu" firstAttribute="top" secondItem="fdM-Iz-XEQ" secondAttribute="bottom" constant="-64" id="RiF-fv-czY"/>
+                            <constraint firstItem="C6P-eF-QAu" firstAttribute="top" secondItem="fdM-Iz-XEQ" secondAttribute="bottom" id="XGh-rk-ziz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="XGh-rk-ziz"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="webView_story" destination="C6P-eF-QAu" id="vsp-8J-y64"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2F1-aA-K9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -168,7 +189,7 @@
         <!--Navigation Controller-->
         <scene sceneID="WsU-JA-Eth">
             <objects>
-                <navigationController hidesBarsOnSwipe="YES" id="B2h-1G-bBD" sceneMemberID="viewController">
+                <navigationController id="B2h-1G-bBD" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="86O-Z1-TOF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
