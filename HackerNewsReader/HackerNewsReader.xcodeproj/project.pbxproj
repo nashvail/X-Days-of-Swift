@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C64B541C1CDF533700CDBEFB /* ArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B541B1CDF533700CDBEFB /* ArticleCell.swift */; };
 		C64B54201CDF7AE000CDBEFB /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64B541F1CDF7AE000CDBEFB /* StoryViewController.swift */; };
+		C670D4621CE58BD100CC2F89 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = C670D4611CE58BD100CC2F89 /* SwiftyJSON.swift */; };
 		C6E728EB1CDCF90700EA14AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E728EA1CDCF90700EA14AC /* AppDelegate.swift */; };
 		C6E728ED1CDCF90700EA14AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E728EC1CDCF90700EA14AC /* ViewController.swift */; };
 		C6E728F01CDCF90700EA14AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6E728EE1CDCF90700EA14AC /* Main.storyboard */; };
@@ -18,7 +19,8 @@
 
 /* Begin PBXFileReference section */
 		C64B541B1CDF533700CDBEFB /* ArticleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleCell.swift; path = ../ArticleCell.swift; sourceTree = "<group>"; };
-		C64B541F1CDF7AE000CDBEFB /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		C64B541F1CDF7AE000CDBEFB /* StoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StoryViewController.swift; path = ../StoryViewController.swift; sourceTree = "<group>"; };
+		C670D4611CE58BD100CC2F89 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = ../../../../Desktop/SwiftyJSON.swift; sourceTree = "<group>"; };
 		C6E728E71CDCF90600EA14AC /* HackerNewsReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HackerNewsReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6E728EA1CDCF90700EA14AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6E728EC1CDCF90700EA14AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +52,6 @@
 		C6E728DE1CDCF90600EA14AC = {
 			isa = PBXGroup;
 			children = (
-				C64B541F1CDF7AE000CDBEFB /* StoryViewController.swift */,
 				C6E728E91CDCF90600EA14AC /* HackerNewsReader */,
 				C6E728E81CDCF90600EA14AC /* Products */,
 			);
@@ -67,6 +68,8 @@
 		C6E728E91CDCF90600EA14AC /* HackerNewsReader */ = {
 			isa = PBXGroup;
 			children = (
+				C64B541F1CDF7AE000CDBEFB /* StoryViewController.swift */,
+				C670D4611CE58BD100CC2F89 /* SwiftyJSON.swift */,
 				C63D10EA1CDF25130079ECE7 /* Views */,
 				C6E728EA1CDCF90700EA14AC /* AppDelegate.swift */,
 				C6E728EC1CDCF90700EA14AC /* ViewController.swift */,
@@ -152,6 +155,7 @@
 				C64B54201CDF7AE000CDBEFB /* StoryViewController.swift in Sources */,
 				C6E728ED1CDCF90700EA14AC /* ViewController.swift in Sources */,
 				C6E728EB1CDCF90700EA14AC /* AppDelegate.swift in Sources */,
+				C670D4621CE58BD100CC2F89 /* SwiftyJSON.swift in Sources */,
 				C64B541C1CDF533700CDBEFB /* ArticleCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
