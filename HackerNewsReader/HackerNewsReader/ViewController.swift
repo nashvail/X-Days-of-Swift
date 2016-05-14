@@ -27,6 +27,8 @@ class ViewController: UIViewController, UITableViewDelegate {
 		return "https://hacker-news.firebaseio.com/v0/item/\(id).json"
 	}
 
+	// MARK: Overriden methods
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -55,8 +57,6 @@ class ViewController: UIViewController, UITableViewDelegate {
 		navigationController?.setNavigationBarHidden(false, animated: true)
 	}
 	
-	
-	
 	// MARK: Table View Methods
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int	 {
 		return stories.count
@@ -68,8 +68,14 @@ class ViewController: UIViewController, UITableViewDelegate {
 		let currentStory = stories[indexPath.row]
 		
 		cell.label_articleTitle.text = currentStory["title"]
-		cell.label_articleSource.text = urlDomain(currentStory["url"]!)
 		cell.label_articleVotes.text = currentStory["score"]
+		
+		if let storyUrl = currentStory["url"] {
+  		cell.label_articleSource.text = urlDomain(storyUrl)
+		} else {
+			cell.label_articleSource.text = ""
+		}
+		
 		cell.accessoryType = .DisclosureIndicator
 		return cell
 	}
@@ -115,10 +121,27 @@ class ViewController: UIViewController, UITableViewDelegate {
 	}
 	
 	// MARK: Custom methods 
-	func urlDomain(url: String) -> String {
-		return NSURL(string: url)!.host!
+	
+	/**
+	Given a URL, returns the domain of the URL
+	
+	E.g : If given "http://www.google.com/design" returns "google.com"
+	
+	- parameter source: URL.
+	
+	- returns: String Domain of the passed in URL.
+	*/
+	func urlDomain(source: String) -> String {
+		if let url = NSURL(string: source) {
+			if let host = url.host{
+				return host
+			} else {
+				return ""
+			}
+		} else {
+			return ""
+		}
 	}
-
 	
 }
 
