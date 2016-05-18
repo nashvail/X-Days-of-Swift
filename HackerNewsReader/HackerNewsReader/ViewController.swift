@@ -13,6 +13,13 @@ var currentStoryUrl: String!
 
 class ViewController: UIViewController, UITableViewDelegate {
 	
+	var refreshControl: UIRefreshControl!
+	var customView: UIView!
+	var labelsArray: Array<UILabel> = []
+	
+	var timer: NSTimer!
+	
+	
 	// MARK: IBOutlets
 	@IBOutlet var tableView_articles: UITableView!
 	
@@ -35,14 +42,12 @@ class ViewController: UIViewController, UITableViewDelegate {
 		// Setting styles for the table view
 		tableView_articles.separatorStyle = .None
 		
-		// Grabbing data from the end point 
-		if let url = NSURL(string: url_topStoriesIds) {
-			if let data = try? NSData(contentsOfURL: url, options: []) {
-				let json = JSON(data: data)
-				parseJSON(json)
-			}
-		}
+		refreshControl = UIRefreshControl()
+		tableView_articles.addSubview(refreshControl)
 		
+//		loadCustomRefreshContents()
+		
+		loadStories()
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -88,6 +93,16 @@ class ViewController: UIViewController, UITableViewDelegate {
 		currentStoryUrl = stories[indexPath.row]["url"]
 	}
 	
+	// MARK: Scroll View methods 
+	
+	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+		// This is where you have to start the custom refresh animation
+		if refreshControl.refreshing {
+  		loadStories()
+		}
+	}
+	
+	
 	// MARK: JSON methods 
 	func parseJSON(json: JSON) {
 		
@@ -124,12 +139,6 @@ class ViewController: UIViewController, UITableViewDelegate {
 	
 	/**
 	Given a URL, returns the domain of the URL
-	
-	E.g : If given "http://www.google.com/design" returns "google.com"
-	
-	- parameter source: URL.
-	
-	- returns: String Domain of the passed in URL.
 	*/
 	func urlDomain(source: String) -> String {
 		if let url = NSURL(string: source) {
@@ -141,6 +150,25 @@ class ViewController: UIViewController, UITableViewDelegate {
 		} else {
 			return ""
 		}
+	}
+	
+	func loadStories() {
+		// Grabbing data from the end point
+		if let url = NSURL(string: url_topStoriesIds) {
+			if let data = try? NSData(contentsOfURL: url, options: []) {
+				let json = JSON(data: data)
+				parseJSON(json)
+				
+				if refreshControl.refreshing {
+					refreshControl.endRefreshing()
+				}
+				
+			}
+		}
+	}
+	
+	func loadCustomRefreshContents() {
+		
 	}
 	
 }
