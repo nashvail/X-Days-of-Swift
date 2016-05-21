@@ -17,6 +17,9 @@ class ViewController: UIViewController, UITableViewDelegate {
 	var customView: UIView!
 	var labelsArray: Array<UILabel> = []
 	
+	// For putting in the refresh control
+	var ovalLayer: CAShapeLayer = CAShapeLayer()
+	
 	var timer: NSTimer!
 	
 	
@@ -43,11 +46,13 @@ class ViewController: UIViewController, UITableViewDelegate {
 		tableView_articles.separatorStyle = .None
 		
 		refreshControl = UIRefreshControl()
+		refreshControl.clipsToBounds = true
 		tableView_articles.addSubview(refreshControl)
 		
-//		loadCustomRefreshContents()
+//		loadCustomRefreshControlContents()
 		
 		loadStories()
+		
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -56,6 +61,15 @@ class ViewController: UIViewController, UITableViewDelegate {
 	
 	override func viewWillAppear(animated: Bool) {
 		navigationController?.setNavigationBarHidden(true, animated: true)
+		
+		// Manually deselect the previously selected row in table 
+		let selectedIndexPath = self.tableView_articles.indexPathForSelectedRow
+		
+		if let rowToDeselect = selectedIndexPath {
+  		self.tableView_articles.deselectRowAtIndexPath(rowToDeselect, animated: true)
+		}
+		
+		
 	}
 	
 	override func viewDidDisappear(animated: Bool) {
@@ -93,17 +107,50 @@ class ViewController: UIViewController, UITableViewDelegate {
 		currentStoryUrl = stories[indexPath.row]["url"]
 	}
 	
-	// MARK: Scroll View methods 
+	// MARK: Scroll View methods
 	
 	func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-		// This is where you have to start the custom refresh animation
 		if refreshControl.refreshing {
   		loadStories()
 		}
 	}
 	
+	// You can fire your animation here also
+	func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+		// This is where you have to start the custom refresh animation
+		let strokeStartAnimation = CABasicAnimation(keyPath: "strokeStart")
+		strokeStartAnimation.fromValue = -0.5
+		strokeStartAnimation.toValue = 1.0
+		
+		let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
+		strokeEndAnimation.fromValue = 0.0
+		strokeEndAnimation.toValue = 1.0
+		
+		let strokeAnimationGroup = CAAnimationGroup()
+		strokeAnimationGroup.duration = 0.9
+		strokeAnimationGroup.repeatDuration = 5.0
+		strokeAnimationGroup.animations = [strokeStartAnimation, strokeEndAnimation]
+		
+		ovalLayer.addAnimation(strokeAnimationGroup, forKey: nil)
+		
+	}
 	
-	// MARK: JSON methods 
+	func scrollViewDidScroll(scrollView: UIScrollView) {
+		// Get the current size of the refresh controller
+		let refreshBounds = refreshControl!.bounds;
+		
+		// Distance the table has been pulled >= 0
+		let pullDistance = max(0.0, -refreshControl!.frame.origin.y);
+		
+		// Pull ratio is between 0 and 1
+		let pullRatio = min( max(pullDistance, 0.0), 100.0) / 100.0;
+		
+		redrawFromProgress(pullRatio)
+	}
+	
+	
+	
+	// MARK: JSON methods
 	func parseJSON(json: JSON) {
 		
 		// Get title, score and url of the top "numTopStoriesToFetch" stories
@@ -153,6 +200,8 @@ class ViewController: UIViewController, UITableViewDelegate {
 	}
 	
 	func loadStories() {
+		// Empty the dictionary holding stories 
+		stories.removeAll()
 		// Grabbing data from the end point
 		if let url = NSURL(string: url_topStoriesIds) {
 			if let data = try? NSData(contentsOfURL: url, options: []) {
@@ -167,9 +216,31 @@ class ViewController: UIViewController, UITableViewDelegate {
 		}
 	}
 	
-	func loadCustomRefreshContents() {
+	func loadCustomRefreshControlContents() {
+		// Let us first set up a circle in the refresh View 
+		refreshControl.backgroundColor = UIColor.whiteColor()
+		refreshControl.tintColor = UIColor.clearColor()
+		refreshControl.clipsToBounds = true
 		
+		ovalLayer.strokeColor = UIColor.blackColor().CGColor
+		ovalLayer.fillColor = UIColor.clearColor().CGColor
+		ovalLayer.lineWidth = 2.0
+		
+		let refreshRadius = refreshControl.frame.height/2.0 * 0.6
+		
+		ovalLayer.path = UIBezierPath(
+			arcCenter: CGPoint(x: refreshControl.frame.width/4 + (2 * ovalLayer.lineWidth), y: refreshControl.frame.height/2),
+			radius: refreshRadius,
+			startAngle: CGFloat(-M_PI_2),
+			endAngle: CGFloat(-M_PI_2 - 2 * M_PI),
+			clockwise: false).CGPath
+	
+		refreshControl.layer.addSublayer(ovalLayer)
 	}
 	
+	// For custom refresh control animation (not implemented)
+	func redrawFromProgress(progress: CGFloat) {
+		ovalLayer.strokeEnd = progress
+	}
 }
 
