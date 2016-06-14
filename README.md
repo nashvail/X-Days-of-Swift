@@ -26,5 +26,5 @@ Trying to recreate open source apps is what I have found is the best way to lear
 ## Single Music Player ##
 ![](http://imgur.com/vSKr6ke.gif)
 
-## List of Lists ##
+## List of Lists (Uses CoreData) ##
 ![](http://imgur.com/ErhyFmv.gif)
